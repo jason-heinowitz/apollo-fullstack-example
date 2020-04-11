@@ -1,3 +1,6 @@
 type Query {
   randomInt(maxNumber: Int!): Int!
+  tracing: JSONObject
 }
+
+scalar JSONObject

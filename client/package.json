@@ -9,11 +9,12 @@
     "test": "jest --verbose"
   },
   "dependencies": {
+    "@apollo/client": "^3.0.0-beta.43",
     "@apollo/react-hooks": "^3.1.4",
     "apollo-boost": "^0.4.7",
     "cross-env": "^7.0.2",
-    "graphql": "^15.0.0",
-    "react": "^16.13.0",
+    "graphql": "^14.6.0",
+    "react": "^16.13.1",
     "react-dom": "^16.13.0"
   },
   "devDependencies": {

@@ -1,6 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
+import { GraphQLJSONObject } from 'graphql-type-json';
 import { ApolloServer } from 'apollo-server-express';
 
 // Kill docker-compose on stop
@@ -13,14 +14,23 @@ import Query from './resolvers/Query';
 const app = express();
 const PORT = 5000;
 
-// app.use(cookieParser());
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 const gqlServer = new ApolloServer({
   typeDefs: fs.readFileSync(path.join(__dirname, './schema.gql'), 'utf8'),
   resolvers: {
     Query,
+    JSONObject: GraphQLJSONObject,
+  },
+  tracing: true,
+  formatResponse: (response) => {
+    const { tracing } = response.extensions;
+    tracing.execution.resolvers = tracing.execution.resolvers.filter((trace) => trace.path[0] !== 'tracing');
+
+    response.data.tracing = tracing;
+    return response;
   },
 });
 gqlServer.applyMiddleware({ app });

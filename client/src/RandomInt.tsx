@@ -12,6 +12,7 @@ const RandomInt: React.FunctionComponent<PropType> = (props: PropType) => {
   const query = gql`
     query GetRandomInt($maxNumber: Int!) {
       randomInt(maxNumber: $maxNumber)
+      tracing
     }
   `;
 
@@ -20,6 +21,7 @@ const RandomInt: React.FunctionComponent<PropType> = (props: PropType) => {
   } = useQuery(query, {
     variables: { maxNumber: 10 },
   });
+  console.log(data);
 
   return (
     <>
