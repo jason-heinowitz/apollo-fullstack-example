@@ -1,0 +1,27 @@
+{
+  "name": "react-kickstart-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./src/index.js --exec babel-node",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/client": "^3.0.0-beta.43",
+    "apollo-server-express": "^2.12.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "graphql": "^15.0.0",
+    "react": "^16.13.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  }
+}
